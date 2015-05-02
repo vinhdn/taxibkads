@@ -1,4 +1,4 @@
-package bk.vinhdo.taxiads;
+package bk.vinhdo.taxiads.activitis;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -32,7 +32,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.loopj.android.http.TextHttpResponseHandler;
 
+import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,10 +46,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import bk.vinhdo.taxiads.R;
 import bk.vinhdo.taxiads.activitis.base.BaseActivity;
 import bk.vinhdo.taxiads.adapters.InfoMapsAdapter;
 import bk.vinhdo.taxiads.adapters.ItemAddressListViewAdapter;
+import bk.vinhdo.taxiads.api.loopj.RestClient;
+import bk.vinhdo.taxiads.api.parse.JSONConvert;
 import bk.vinhdo.taxiads.models.Address;
+import bk.vinhdo.taxiads.models.AddressModel;
+import bk.vinhdo.taxiads.models.ResponseModel;
 import bk.vinhdo.taxiads.volley.VolleySingleton;
 
 public class MapsActivity extends BaseActivity implements
@@ -147,6 +154,25 @@ public class MapsActivity extends BaseActivity implements
 
         setUpMapIfNeeded();
         listAddress = new ArrayList<>();
+        RestClient.getListAddress(0, 0, 0, new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                ResponseModel response = JSONConvert.getResponse(responseString);
+                if(response.isSuccess()){
+                    List<AddressModel>  listAddrs = JSONConvert.getAddresses(response.getData());
+                    if(listAddrs!= null){
+                        Log.d("Size Addrs",listAddrs.size() + "");
+                    }else{
+                        Log.d("Size Addrs","NULL");
+                    }
+                }
+            }
+        });
     }
 
     /**

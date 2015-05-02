@@ -7,16 +7,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import bk.vinhdo.taxiads.MapsActivity;
 import bk.vinhdo.taxiads.R;
 import bk.vinhdo.taxiads.activitis.base.BaseActivity;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main,true);
+        setContentView(R.layout.activity_main, true);
+        ButterKnife.inject(this);
     }
 
     @Override
@@ -25,7 +29,7 @@ public class MainActivity extends BaseActivity {
         setVisibleLeftImage(true);
         setBackgroundLeftImage(R.drawable.pink_ic_navigation_drawer);
         setBackgroundRightImage(R.drawable.topic_map_ic);
-        setBackgroundTitleText("Search e.g Hanoi",android.R.color.transparent);
+        setBackgroundTitleText("Search e.g Hanoi", android.R.color.transparent);
         final Drawable cd = getResources().getDrawable(R.drawable.ab_background_light);
         layout_actionbar.setBackgroundDrawable(cd);
         cd.setAlpha(0);
@@ -58,27 +62,34 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @OnClick(R.id.main_addr_nearby)
+    public void nearby(){
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    @OnClick(R.id.main_addr_cafe)
+    public void cafe(){
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+    }
 
-        return super.onOptionsItemSelected(item);
+    @OnClick(R.id.main_addr_heath)
+    public void heath(){
+
+    }
+
+    @OnClick(R.id.main_addr_repair)
+    public void repair(){
+
+    }
+
+    @OnClick(R.id.main_addr_restaurant)
+    public void restaurant(){
+
+    }
+
+    @OnClick(R.id.main_addr_shop)
+    public void shop(){
+
     }
 
     @Override

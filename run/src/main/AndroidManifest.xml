@@ -27,7 +27,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".activitis.MapsActivity"
             android:label="@string/title_activity_maps" >
         </activity>
         <activity
@@ -35,7 +35,7 @@
             android:label="BK Address" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MapsActivity" />
+                android:value=".activitis.MapsActivity" />
         </activity>
         <activity
             android:name=".activitis.CheckinActivity"

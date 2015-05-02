@@ -39,4 +39,6 @@
     <string name="invite_friends">Invite friends</string>
     <string name="title_activity_activity_address">ActivityAddress</string>
     <string name="title_activity_activity_test">ActivityTest</string>
+    <string name="message_network_is_unavailable">Mất kết nối mạng</string>
+    <string name="generic_error">Error!</string>
 </resources>
